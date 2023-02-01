@@ -23,12 +23,12 @@ jobs:
         registry: ghcr.io
         username: ${{ github.repository_owner }}
         password: ${{ secrets.CR_PAT }}
-      - name: build and push
-        uses: docker/build-push-action@v2
-        with:
-          context: .
-          file: Dockerfile
-          push: ${{ env.NEED_IMAGE_PUSH == 'true' }}
-          tags: |
-            ${{ env.LATEST_IMAGE_NAME }}
-            ${{ env.IMAGE_NAME }}
+    - name: build and push
+      uses: docker/build-push-action@v2
+      with:
+        context: .
+        file: Dockerfile
+        push: ${{ env.NEED_IMAGE_PUSH == 'true' }}
+        tags: |
+          ${{ env.LATEST_IMAGE_NAME }}
+          ${{ env.IMAGE_NAME }}
